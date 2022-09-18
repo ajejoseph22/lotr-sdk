@@ -1,4 +1,4 @@
-import Book from '../src/services/book';
+import Book from '../../src/services/book';
 import { AxiosInstance } from 'axios';
 
 describe('Book', () => {

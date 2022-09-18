@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import Chapter from "../src/services/chapter";
+import Chapter from '../../src/services/chapter';
 
 describe('Chapter', () => {
   describe('list', () => {
@@ -38,7 +38,7 @@ describe('Chapter', () => {
           {
             _id: '5cd566778e30eff6ebccfea8',
             chapterName: 'some_chapter',
-          }
+          },
         ],
       };
       const expectedChapterId = expectedResponse.docs[0]._id;

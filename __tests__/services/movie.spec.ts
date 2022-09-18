@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import Movie from '../src/services/movie';
+import Movie from '../../src/services/movie';
 
 describe('Movie', () => {
   describe('list', () => {

@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import Quote from '../src/services/quote';
+import Quote from '../../src/services/quote';
 
 describe('Quote', () => {
   describe('list', () => {

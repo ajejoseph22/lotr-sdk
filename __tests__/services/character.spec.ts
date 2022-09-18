@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import Character from '../src/services/character';
+import Character from '../../src/services/character';
 
 describe('Character', () => {
   describe('list', () => {
