@@ -16,15 +16,12 @@ export default class LOTR {
   quote: Quote;
   chapter: Chapter;
 
-  constructor(accessKey: string) {
-    if (!accessKey) {
-      throw new Error('Missing credentials, please pass in your access key');
-    }
-
+  constructor(accessKey?: string) {
     this.client = axios.create({
       baseURL: LOTR.API_URL,
       headers: {
-        Authorization: `Bearer ${accessKey}`,
+        // if accessKey exists, add authorization header
+        ...(!!accessKey && { Authorization: `Bearer ${accessKey}` }),
       },
     });
 
