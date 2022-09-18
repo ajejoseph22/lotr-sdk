@@ -32,11 +32,13 @@ export default class Chapter {
 
   getChaptersForBook(
     bookId: string,
-    options?: ListRequestOptions<Chapter>,
+    options?: ListRequestOptions<ChapterType>,
   ): Promise<ListChaptersResponse> {
     return this.client
       .get(
-        `${Book.BASE_PATH}/${bookId}/chapter${encodeOptions<Chapter>(options)}`,
+        `${Book.BASE_PATH}/${bookId}/chapter${encodeOptions<ChapterType>(
+          options,
+        )}`,
       )
       .then((response: AxiosResponse<ListChaptersResponse>) => response.data);
   }

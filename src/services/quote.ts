@@ -30,22 +30,24 @@ export default class Quote {
 
   getQuotesForMovie(
     movieId: string,
-    options?: ListRequestOptions<Quote>,
+    options?: ListRequestOptions<QuoteType>,
   ): Promise<ListQuotesResponse> {
     return this.client
       .get(
-        `${Movie.BASE_PATH}/${movieId}/quote${encodeOptions<Quote>(options)}`,
+        `${Movie.BASE_PATH}/${movieId}/quote${encodeOptions<QuoteType>(
+          options,
+        )}`,
       )
       .then((response: AxiosResponse<ListQuotesResponse>) => response.data);
   }
 
   getQuotesByCharacter(
     characterId: string,
-    options?: ListRequestOptions<Quote>,
+    options?: ListRequestOptions<QuoteType>,
   ): Promise<ListQuotesResponse> {
     return this.client
       .get(
-        `${Character.BASE_PATH}/${characterId}/quote${encodeOptions<Quote>(
+        `${Character.BASE_PATH}/${characterId}/quote${encodeOptions<QuoteType>(
           options,
         )}`,
       )
