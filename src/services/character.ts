@@ -15,12 +15,12 @@ export default class Character {
     this.client = client;
   }
 
-  list(options?: ListRequestOptions<CharacterType>): Promise<CharacterType[]> {
+  list(
+    options?: ListRequestOptions<CharacterType>,
+  ): Promise<ListCharactersResponse> {
     return this.client
       .get(`${Character.BASE_PATH}${encodeOptions<CharacterType>(options)}`)
-      .then(
-        (response: AxiosResponse<ListCharactersResponse>) => response.data.docs,
-      );
+      .then((response: AxiosResponse<ListCharactersResponse>) => response.data);
   }
 
   get(id: string): Promise<CharacterType> {
