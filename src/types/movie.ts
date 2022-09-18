@@ -6,7 +6,7 @@ export interface Movie {
   boxOfficeRevenueInMillions: number
   academyAwardNominations: number
   academyAwardWins: number
-  rottenTomatesScore: number
+  rottenTomatoesScore: number
 }
 
 export interface ListMoviesResponse {
