@@ -11,9 +11,9 @@ npm i @ajejoseph22/lotr-sdk
 
 ### Authentication
 
-To use ALL the features of the LOTR SDK, you need to provide an accessToken. That token is available for free on the [One API](https://the-one-api.dev/sign-up) website once you sign up.
+To use ALL the features of the LOTR SDK, you need to provide an `accessToken`. That token is available for free on the [One API](https://the-one-api.dev/sign-up) website once you sign up.
 If you are accessing only the `Book` interface, you can skip this step.
-However, if you intend to use this SDK to access the `Character`, `Movie`, `Quote` or `Chapter` interfaces, you will need to provide an accessToken.
+However, if you intend to use this SDK to access the `Character`, `Movie`, `Quote` or `Chapter` interfaces, you will need to provide an `accessToken`.
 
 ### Quick Start
 
@@ -24,7 +24,7 @@ const client = new LOTR('<YOUR_ACCESS_TOKEN>');
 
 client.character
   .list({
-    limit: 10,
+    limit: 10, // limit the number of responses to 10
   })
   .then((characters) => {
     // handle data
@@ -42,8 +42,6 @@ The SDK models the [One API](https://the-one-api.dev/documentation) and each pro
 
 ### Examples
 
-#### List Books
-
 To list all books:
 
 ```js
@@ -53,7 +51,7 @@ const client = new LOTR(); // accessToken not needed
 
 client.book
   .list({
-    limit: 10,
+    limit: 10, // limit the number of responses to 10
   })
   .then((books) => {
     // handle data
@@ -72,7 +70,7 @@ const client = new LOTR('<YOUR_ACCESS_TOKEN>');
 
 client.character
   .get('<character_id>')
-  .character((book) => {
+  .then((character) => {
     // handle data
   })
   .catch((err) => {
@@ -88,26 +86,26 @@ import LOTR from '@ajejoseph22/lotr-sdk';
 const client = new LOTR('<YOUR_ACCESS_TOKEN>');
 
 client.quote
-    .getQuotesByCharacter('<character_id>', {
-        limit: 2,
-        page: 2,
-        sort: {
-            character: 'asc',
-        },
-        filter: {
-            excludes: {
-                dialog: ["I didn't think it would end this way."],
-            },
-            propertyExists: 'character',
-            isEqualTo: {
-                movie: '5cd95395de30eff6ebccde5d',
-            },
-        },
-    })
-    .then((quotes) => {
-        // handle data
-    })
-    .catch((e) => {
-        // handle error
-    });
+  .getQuotesByCharacter('<character_id>', {
+    limit: 2,
+    page: 2,
+    sort: {
+      character: 'asc',
+    },
+    filter: {
+      excludes: {
+        dialog: ["I didn't think it would end this way."],
+      },
+      propertyExists: 'character',
+      isEqualTo: {
+        movie: '5cd95395de30eff6ebccde5d',
+      },
+    },
+  })
+  .then((quotes) => {
+    // handle data
+  })
+  .catch((e) => {
+    // handle error
+  });
 ```
