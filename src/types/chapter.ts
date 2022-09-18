@@ -1,12 +1,10 @@
+import { ListResponse } from './response';
+
 export interface Chapter {
-  _id: string
-  chapterName: string
+  _id: string;
+  chapterName: string;
 }
 
-export interface ListChaptersResponse {
+export interface ListChaptersResponse extends ListResponse {
   docs: Chapter[];
-  total: number;
-  limit: number;
-  page: number;
-  offset: number;
 }

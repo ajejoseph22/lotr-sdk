@@ -1,15 +1,13 @@
+import { ListResponse } from './response';
+
 export interface Quote {
-  _id: string
-  dialog: string
-  movie: string
-  character: string
-  id: string
+  _id: string;
+  dialog: string;
+  movie: string;
+  character: string;
+  id: string;
 }
 
-export interface ListQuotesResponse {
+export interface ListQuotesResponse extends ListResponse {
   docs: Quote[];
-  total: number;
-  limit: number;
-  page: number;
-  offset: number;
 }

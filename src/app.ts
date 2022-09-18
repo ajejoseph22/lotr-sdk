@@ -1,13 +1,13 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
-import Book from "./services/book";
-import Movie from "./services/movie";
-import Character from "./services/character";
-import Quote from "./services/quote";
-import Chapter from "./services/chapter";
+import Book from './services/book';
+import Movie from './services/movie';
+import Character from './services/character';
+import Quote from './services/quote';
+import Chapter from './services/chapter';
 
 export default class LOTR {
-  private static readonly API_URL = "https://the-one-api.dev/v2"
+  private static readonly API_URL = 'https://the-one-api.dev/v2';
   private readonly client: AxiosInstance;
 
   book: Book;
@@ -18,15 +18,15 @@ export default class LOTR {
 
   constructor(accessKey: string) {
     if (!accessKey) {
-      throw new Error("Missing credentials, please pass in your access key")
+      throw new Error('Missing credentials, please pass in your access key');
     }
 
     this.client = axios.create({
       baseURL: LOTR.API_URL,
       headers: {
-        Authorization: `Bearer ${accessKey}`
-      }
-    })
+        Authorization: `Bearer ${accessKey}`,
+      },
+    });
 
     this.book = new Book(this.client);
     this.movie = new Movie(this.client);
