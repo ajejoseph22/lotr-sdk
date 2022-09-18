@@ -4,13 +4,12 @@ import {
   ListCharactersResponse,
   Character as CharacterType,
 } from '../types/character';
-import { ListQuotesResponse, Quote } from '../types/quote';
-import {encodeOptions} from "../util/methods";
-import {ListRequestOptions} from "../types/request";
+import { encodeOptions } from '../util/methods';
+import { ListRequestOptions } from '../types/request';
 
 export default class Character {
-  private static readonly BASE_PATH = '/character';
   private client: AxiosInstance;
+  static readonly BASE_PATH = '/character';
 
   constructor(client: AxiosInstance) {
     this.client = client;
@@ -30,14 +29,6 @@ export default class Character {
       .then(
         (response: AxiosResponse<ListCharactersResponse>) =>
           response.data.docs[0],
-      );
-  }
-
-  getQuotes(id: string, options?: ListRequestOptions<Quote>): Promise<Quote[]> {
-    return this.client
-      .get(`${Character.BASE_PATH}/${id}/quote${encodeOptions<Quote>(options)}`)
-      .then(
-        (response: AxiosResponse<ListQuotesResponse>) => response.data.docs,
       );
   }
 }
