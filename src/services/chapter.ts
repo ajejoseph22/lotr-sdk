@@ -1,6 +1,8 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
 import { ListChaptersResponse, Chapter as ChapterType } from '../types/chapter';
+import {encodeOptions} from "../util/methods";
+import {ListRequestOptions} from "../types/request";
 
 export default class Chapter {
   private static readonly BASE_PATH = '/chapter';
@@ -10,9 +12,9 @@ export default class Chapter {
     this.client = client;
   }
 
-  list(): Promise<ListChaptersResponse> {
+  list(options?: ListRequestOptions<ChapterType>): Promise<ListChaptersResponse> {
     return this.client
-      .get(Chapter.BASE_PATH)
+      .get(`${Chapter.BASE_PATH}${encodeOptions<ChapterType>(options)}`)
       .then((response: AxiosResponse<ListChaptersResponse>) => response.data);
   }
 

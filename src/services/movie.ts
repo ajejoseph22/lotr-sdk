@@ -1,7 +1,9 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
 import { ListMoviesResponse, Movie as MovieType } from '../types/movie';
-import { ListQuotesResponse } from '../types/quote';
+import { ListQuotesResponse, Quote } from '../types/quote';
+import { encodeOptions } from '../util/methods';
+import { ListRequestOptions } from '../types/request';
 
 export default class Movie {
   private static readonly BASE_PATH = '/movie';
@@ -11,9 +13,9 @@ export default class Movie {
     this.client = client;
   }
 
-  list(): Promise<ListMoviesResponse> {
+  list(options?: ListRequestOptions<MovieType>): Promise<ListMoviesResponse> {
     return this.client
-      .get(Movie.BASE_PATH)
+      .get(`${Movie.BASE_PATH}${encodeOptions<MovieType>(options)}`)
       .then((response: AxiosResponse<ListMoviesResponse>) => response.data);
   }
 
@@ -25,9 +27,12 @@ export default class Movie {
       );
   }
 
-  getQuotes(id: string): Promise<ListQuotesResponse> {
+  getQuotes(
+    id: string,
+    options?: ListRequestOptions<Quote>,
+  ): Promise<ListQuotesResponse> {
     return this.client
-      .get(`${Movie.BASE_PATH}/${id}/quote`)
+      .get(`${Movie.BASE_PATH}/${id}/quote${encodeOptions<Quote>(options)}`)
       .then((response: AxiosResponse<ListQuotesResponse>) => response.data);
   }
 }
