@@ -1,7 +1,8 @@
 {
-  "name": "lotr-sdk",
+  "name": "@ajejoseph22/lotr-sdk",
   "version": "1.0.0",
   "description": "Lord Of The Rings SDK",
+  "main": "build/src/app.js",
   "engines": {
     "node": ">= 16.13 <17"
   },
