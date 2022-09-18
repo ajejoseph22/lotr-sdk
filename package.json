@@ -1,11 +1,11 @@
 {
   "name": "@ajejoseph22/lotr-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lord Of The Rings SDK",
   "main": "build/src/app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ajejoseph22/joseph-aje-sdk.git"
+    "url": "https://github.com/ajejoseph22/joseph_aje-sdk.git"
   },
   "engines": {
     "node": ">= 16.13 <17"
