@@ -1,6 +1,7 @@
 import axios, {AxiosInstance} from 'axios';
 import Book from "./services/book";
 import Movie from "./services/movie";
+import Character from "./services/character";
 
 export default class LOTR {
   private static readonly API_URL = "https://the-one-api.dev/v2"
@@ -8,6 +9,7 @@ export default class LOTR {
 
   book: Book;
   movie: Movie;
+  character: Character;
 
   constructor(accessKey: string) {
     if (!accessKey) {
@@ -23,5 +25,6 @@ export default class LOTR {
 
     this.book = new Book(this.client);
     this.movie = new Movie(this.client);
+    this.character = new Character(this.client)
   }
 }
