@@ -1,6 +1,6 @@
 {
   "name": "@ajejoseph22/lotr-sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lord Of The Rings SDK",
   "main": "build/src/app.js",
   "repository": {
