@@ -1,11 +1,9 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
-import {
-  ListCharactersResponse,
-  Character as CharacterType,
-} from '../types/character';
+import { Character as CharacterType } from '../types/character';
 import { encodeOptions } from '../util/methods';
 import { ListRequestOptions } from '../types/request';
+import { ListResponse } from '../types/response';
 
 export default class Character {
   private client: AxiosInstance;
@@ -17,17 +15,19 @@ export default class Character {
 
   list(
     options?: ListRequestOptions<CharacterType>,
-  ): Promise<ListCharactersResponse> {
+  ): Promise<ListResponse<CharacterType>> {
     return this.client
       .get(`${Character.BASE_PATH}${encodeOptions<CharacterType>(options)}`)
-      .then((response: AxiosResponse<ListCharactersResponse>) => response.data);
+      .then(
+        (response: AxiosResponse<ListResponse<CharacterType>>) => response.data,
+      );
   }
 
   get(id: string): Promise<CharacterType> {
     return this.client
       .get(`${Character.BASE_PATH}/${id}`)
       .then(
-        (response: AxiosResponse<ListCharactersResponse>) =>
+        (response: AxiosResponse<ListResponse<CharacterType>>) =>
           response.data.docs[0],
       );
   }

@@ -1,5 +1,3 @@
-import { ListResponse } from './response';
-
 export interface Character {
   _id: string;
   name: string;
@@ -12,8 +10,4 @@ export interface Character {
   realm: string;
   hair: string;
   wikiUrl: string;
-}
-
-export interface ListCharactersResponse extends ListResponse {
-  docs: Character[];
 }
