@@ -1,5 +1,3 @@
-import { ListResponse } from './response';
-
 export interface Movie {
   _id: string;
   name: string;
@@ -9,8 +7,4 @@ export interface Movie {
   academyAwardNominations: number;
   academyAwardWins: number;
   rottenTomatoesScore: number;
-}
-
-export interface ListMoviesResponse extends ListResponse {
-  docs: Movie[];
 }

@@ -1,9 +1,10 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 
-import { ListChaptersResponse, Chapter as ChapterType } from '../types/chapter';
+import { Chapter as ChapterType } from '../types/chapter';
 import { encodeOptions } from '../util/methods';
 import { ListRequestOptions } from '../types/request';
 import Book from './book';
+import { ListResponse } from '../types/response';
 
 export default class Chapter {
   private static readonly BASE_PATH = '/chapter';
@@ -15,17 +16,19 @@ export default class Chapter {
 
   list(
     options?: ListRequestOptions<ChapterType>,
-  ): Promise<ListChaptersResponse> {
+  ): Promise<ListResponse<ChapterType>> {
     return this.client
       .get(`${Chapter.BASE_PATH}${encodeOptions<ChapterType>(options)}`)
-      .then((response: AxiosResponse<ListChaptersResponse>) => response.data);
+      .then(
+        (response: AxiosResponse<ListResponse<ChapterType>>) => response.data,
+      );
   }
 
   get(id: string): Promise<ChapterType> {
     return this.client
       .get(`${Chapter.BASE_PATH}/${id}`)
       .then(
-        (response: AxiosResponse<ListChaptersResponse>) =>
+        (response: AxiosResponse<ListResponse<ChapterType>>) =>
           response.data.docs[0],
       );
   }
@@ -33,13 +36,15 @@ export default class Chapter {
   getChaptersForBook(
     bookId: string,
     options?: ListRequestOptions<ChapterType>,
-  ): Promise<ListChaptersResponse> {
+  ): Promise<ListResponse<ChapterType>> {
     return this.client
       .get(
         `${Book.BASE_PATH}/${bookId}/chapter${encodeOptions<ChapterType>(
           options,
         )}`,
       )
-      .then((response: AxiosResponse<ListChaptersResponse>) => response.data);
+      .then(
+        (response: AxiosResponse<ListResponse<ChapterType>>) => response.data,
+      );
   }
 }
